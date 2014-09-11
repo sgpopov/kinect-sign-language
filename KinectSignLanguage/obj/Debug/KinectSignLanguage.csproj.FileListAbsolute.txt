@@ -1,0 +1,17 @@
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KinectSignLanguage.exe.config
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\MainWindow.baml
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\MainWindow.g.cs
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\App.g.cs
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KinectSignLanguage_MarkupCompile.cache
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KinectSignLanguage.g.resources
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KinectSignLanguage.Properties.Resources.resources
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KinectSignLanguage.csproj.GenerateResource.Cache
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KinectSignLanguage.csprojResolveAssemblyReference.cache
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KinectSignLanguage.exe
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KinectSignLanguage.pdb
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KSL.Gestures.dll
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KSL.Gestures.pdb
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KinectSignLanguage.exe
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KinectSignLanguage.pdb
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KSL.exe.config
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KSL.Demo.exe.config

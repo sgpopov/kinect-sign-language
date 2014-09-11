@@ -1,0 +1,30 @@
+﻿<Window x:Class="KSL.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:kv="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers"
+        Title="Kinect Sign Language :: beta"
+        Width="1366" Height="768" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Background="#379154">
+    <Grid>         
+        <Image
+            Source="images/backgound.png"
+            HorizontalAlignment="Center" Width="1500" Margin="-88,-188,-54,188" 
+            Stretch="UniformToFill"></Image>
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="640" Height="480" Margin="0, 10, 0, 0">
+            <kv:KinectDepthViewer x:Name="DepthViewer" KinectSensorManager="{Binding KinectSensorManager}" />
+            <Canvas>
+                <kv:KinectSkeletonViewer
+                    KinectSensorManager="{Binding KinectSensorManager}"
+                    Width="{Binding ElementName=DepthViewer, Path=ActualWidth}"
+                    Height="{Binding ElementName=DepthViewer, Path=ActualHeight}"
+                    ShowBones="True" ShowJoints="True" ShowCenter="True" ImageType="Depth" />
+            </Canvas>
+        </Grid>
+
+        <TextBlock
+            Text="{Binding Gesture}"
+            HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="1300" Height="150"
+            TextAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="#FFFFFF" />
+    </Grid>
+</Window>

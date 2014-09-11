@@ -1,0 +1,17 @@
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KSL.Demo.exe.config
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KSL.Demo.exe
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KSL.Demo.pdb
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KSL.Gestures.dll
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\KSL.Gestures.pdb
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KSL.Demo.csprojResolveAssemblyReference.cache
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\MainWindow.baml
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\MainWindow.g.cs
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\App.g.cs
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KSL.Demo_MarkupCompile.cache
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KSL.Demo.g.resources
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KSL.Demo.Properties.Resources.resources
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KSL.Demo.csproj.GenerateResource.Cache
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KSL.Demo.exe
+c:\users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Debug\KSL.Demo.pdb
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\Microsoft.Kinect.Toolkit.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
