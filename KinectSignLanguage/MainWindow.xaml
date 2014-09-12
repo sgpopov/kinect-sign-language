@@ -21,10 +21,15 @@
                     ShowBones="True" ShowJoints="True" ShowCenter="True" ImageType="Depth" />
             </Canvas>
         </Grid>
+     
+        <TextBlock
+            Text="{Binding GestureBuilder}"
+            HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="1300" Height="75" Margin="0,0,0,100"
+            TextAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="#FFFFFF" />
 
         <TextBlock
-            Text="{Binding Gesture}"
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="1300" Height="150"
+            Text="{Binding GestureSentence}"
+            HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="1300" Height="75" Margin="0,0,0,0"
             TextAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="#FFFFFF" />
     </Grid>
 </Window>

@@ -49,12 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classifier\Classifier.cs" />
+    <Compile Include="Classifier\SentenceStructure.cs" />
     <Compile Include="Core\GesturesEnumTypes.cs" />
     <Compile Include="Core\IGesturesSegment.cs" />
     <Compile Include="Core\Gesture.cs" />
     <Compile Include="Core\GesturesController.cs" />
     <Compile Include="Core\GesturesEventArgs.cs" />
-    <Compile Include="Core\WordsDictionaryEnum.cs" />
+    <Compile Include="Classifier\WordsEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Segments\AgeSegments.cs" />
     <Compile Include="Segments\CitySegments.cs" />
@@ -64,7 +65,6 @@
     <Compile Include="Segments\NameSegments.cs" />
     <Compile Include="Segments\YouSegments.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

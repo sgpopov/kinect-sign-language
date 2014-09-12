@@ -1,75 +1,158 @@
 ﻿namespace KSL.Gestures.Classifier
 {
-    using KSL.Gestures.Core;
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
     public sealed class Classifier
     {
+        #region "Declarations"
+
         private static readonly Classifier instance = new Classifier();
+
+        private List<int> sentenceBuilder = new List<int>();
+
+        private int currentWordIndex = 0;
+
+        private List<int> notMatchList = new List<int>();
+
+        private string foundSentence = String.Empty;
+
+        private List<SentenceStructure> sentencesDictionary = new List<SentenceStructure>();
+
+        #endregion
+
+        #region "Constructors"
 
         static Classifier() { }
 
         private Classifier() { }
 
-        private List<int> input = new List<int>();
-
-        private bool foundMatch = false;
-
-        static readonly Dictionary<string, List<int>> sentencesDictionary = new Dictionary<string, List<int>> {
-            { "What city do you live in?", new List<int> { (int) WordsDictionaryEnum.City, (int) WordsDictionaryEnum.You, (int) WordsDictionaryEnum.Live } },
-            { "What is yout name?", new List<int> { (int) WordsDictionaryEnum.You, (int) WordsDictionaryEnum.Name } },
-            { "Can you drive [a car]?", new List<int> { (int) WordsDictionaryEnum.You, (int) WordsDictionaryEnum.Drive } },
-            { "How old are you?", new List<int> { (int) WordsDictionaryEnum.Age, (int) WordsDictionaryEnum.You } },
-            { "Can you drive a bicycle?", new List<int> { (int) WordsDictionaryEnum.You, (int) WordsDictionaryEnum.Drive, (int) WordsDictionaryEnum.Bicycle } }
-        };
+        #endregion
 
         public static Classifier getInstance
         {
             get { return instance; }
         }
 
+        public void init()
+        {
+            SentenceStructure s = new SentenceStructure
+            {
+                ID = 1,
+                Codes = new List<int> { (int)WordsEnum.City, (int)WordsEnum.You, (int)WordsEnum.Live },
+                Text = "What city do you live in"
+            };
+            this.sentencesDictionary.Add(s);
+
+            s = new SentenceStructure
+            {
+                ID = 2,
+                Codes = new List<int> { (int)WordsEnum.You, (int)WordsEnum.Name },
+                Text = "What is yout name?"
+            };
+            this.sentencesDictionary.Add(s);
+
+            s = new SentenceStructure
+            {
+                ID = 3,
+                Codes = new List<int> { (int)WordsEnum.You, (int)WordsEnum.Drive },
+                Text = "Can you drive [a car]?"
+            };
+            this.sentencesDictionary.Add(s);
+
+            s = new SentenceStructure
+            {
+                ID = 4,
+                Codes = new List<int> { (int)WordsEnum.Age, (int)WordsEnum.You },
+                Text = "How old are you?"
+            };
+            this.sentencesDictionary.Add(s);
+
+            s = new SentenceStructure
+            {
+                ID = 5,
+                Codes = new List<int> { (int)WordsEnum.You, (int)WordsEnum.Drive, (int)WordsEnum.Bicycle },
+                Text = "Can you drive a bicycle?"
+            };
+            this.sentencesDictionary.Add(s);
+        }
+
         public void addCode(int wordCode)
         {
-            this.input.Add(wordCode);
+            this.sentenceBuilder.Add(wordCode);
         }
 
-        public String matchForSentence()
+        public void findSentence()
         {
-            if (this.input.Count < 2)
-            {
-                return String.Empty;
-            }
+            if (this.sentenceBuilder.Count < 1)
+                return;
 
-            foreach (var item in sentencesDictionary)
+            for (int i = currentWordIndex; i < this.sentenceBuilder.Count; i += 1)
             {
-                var Value = item.Value;
-                var Key = item.Key;
+                bool AreThereMatches = false;
 
-                if (input.SequenceEqual(Value))
+                foreach (SentenceStructure s in this.sentencesDictionary)
                 {
-                    if (foundMatch)
+                    if (this.notMatchList.Contains(s.ID) || this.sentenceBuilder.Count > s.Codes.Count)
+                        continue;
+
+                    if (this.sentenceBuilder[i] != s.Codes[i])
                     {
-                        clearInputData();
-                        return Key;
+                        this.notMatchList.Add(s.ID);
+                        if (!AreThereMatches)
+                            AreThereMatches = false;
+
+                        continue;
                     }
 
-                    foundMatch = true;
+                    if (this.sentenceBuilder.Count == s.Codes.Count && this.sentenceBuilder.SequenceEqual(s.Codes))
+                    {
+                        this.foundSentence = s.Text;
+                        AreThereMatches = true;
 
-                    return Key;
+                        return;
+                    }
+
+                    AreThereMatches = true;
                 }
+
+                if (!AreThereMatches)
+                {
+                    this.foundSentence = String.Empty;
+                    currentWordIndex = currentWordIndex <= 0 ? 0 : currentWordIndex - 1;
+                    i = currentWordIndex;
+                    this.sentenceBuilder.RemoveAt(i);
+                    this.notMatchList.Clear();
+
+                    findSentence();
+                }
+
+                currentWordIndex += 1;
             }
-
-            clearInputData();
-
-            return String.Empty;
         }
 
-        private void clearInputData()
+        public string getSentence()
         {
-            this.foundMatch = false;
-            this.input.Clear();
+            return this.foundSentence;
+        }
+
+        public List<int> getSentenceBuilder()
+        {
+            List<int> buffer = this.sentenceBuilder;
+
+            if (!String.IsNullOrEmpty(this.foundSentence))
+                this.clear();
+
+            return buffer;
+        }
+
+        private void clear()
+        {
+            this.sentenceBuilder.Clear();
+            this.notMatchList.Clear();
+            this.foundSentence = String.Empty;
+            this.currentWordIndex = 0;
         }
     }
 }

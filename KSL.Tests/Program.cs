@@ -1,5 +1,6 @@
 ﻿namespace KSL.Tests
 {
+    using KSL.Gestures.Classifier;
     using KSL.Gestures.Core;
     using System;
     using System.Collections.Generic;
@@ -8,53 +9,127 @@
     public class Program
     {
         private List<int> input = new List<int>();
+        private int currentWordIndex = 0;
+        private List<int> notMatchList = new List<int>();
+        private string foundSentence = String.Empty;
 
-        private bool foundMatchOnce = false;
-
-        private bool foundMatchTwice = false;
-
-        static readonly Dictionary<string, List<int>> sentencesDictionary = new Dictionary<string, List<int>> {
-            { "What city do you live in?", new List<int> { (int) WordsDictionaryEnum.City, (int) WordsDictionaryEnum.You, (int) WordsDictionaryEnum.Live } },
-            { "What is yout name?", new List<int> { (int) WordsDictionaryEnum.You, (int) WordsDictionaryEnum.Name } },
-            { "Can you drive [a car]?", new List<int> { (int) WordsDictionaryEnum.You, (int) WordsDictionaryEnum.Drive } },
-            { "How old are you?", new List<int> { (int) WordsDictionaryEnum.Age, (int) WordsDictionaryEnum.You } },
-            { "Can you drive a bicycle?", new List<int> { (int) WordsDictionaryEnum.You, (int) WordsDictionaryEnum.Drive, (int) WordsDictionaryEnum.Bicycle } }
+        private List<SentenceStructure> sentencesDictionary = new List<SentenceStructure>
+        {
+            {
+                new SentenceStructure {
+                    ID = 1,
+                    Codes = new List<int> { (int) WordsEnum.City, (int) WordsEnum.You, (int) WordsEnum.Live },
+                    Text = "What city do you live in"
+                }
+            },
+            {
+                new SentenceStructure {
+                    ID = 2,
+                    Codes = new List<int> { (int) WordsEnum.You, (int) WordsEnum.Name },
+                    Text = "What is yout name?"
+                }
+            },
+            {
+                new SentenceStructure {
+                    ID = 3,
+                    Codes = new List<int> { (int) WordsEnum.You, (int) WordsEnum.Drive },
+                    Text = "Can you drive [a car]?"
+                }
+            },
+            {
+                new SentenceStructure {
+                    ID = 4,
+                    Codes = new List<int> { (int) WordsEnum.Age, (int) WordsEnum.You },
+                    Text = "How old are you?"
+                }
+            },
+            {
+                new SentenceStructure {
+                    ID = 5,
+                    Codes = new List<int> { (int) WordsEnum.You, (int) WordsEnum.Drive, (int) WordsEnum.Bicycle },
+                    Text = "Can you drive a bicycle?"
+                }
+            }
+        };
+        
+        static readonly Dictionary<string, List<int>> sentencesDictionary2 = new Dictionary<string, List<int>> {
+            { "What city do you live in?", new List<int> { (int) WordsEnum.City, (int) WordsEnum.You, (int) WordsEnum.Live } },
+            { "What is yout name?", new List<int> { (int) WordsEnum.You, (int) WordsEnum.Name } },
+            { "Can you drive [a car]?", new List<int> { (int) WordsEnum.You, (int) WordsEnum.Drive } },
+            { "How old are you?", new List<int> { (int) WordsEnum.Age, (int) WordsEnum.You } },
+            { "Can you drive a bicycle?", new List<int> { (int) WordsEnum.You, (int) WordsEnum.Drive, (int) WordsEnum.Bicycle } }
         };
 
         static void Main(string[] args)
         {
             Program p = new Program();
 
-            p.match((int)WordsDictionaryEnum.You);
-            p.match((int)WordsDictionaryEnum.You);
-            p.match((int)WordsDictionaryEnum.Drive);
-            p.match((int)WordsDictionaryEnum.Bicycle);
+            p.addCode((int)WordsEnum.You);
+            Console.WriteLine(p.displaySentence());
+
+            p.addCode((int)WordsEnum.You);
+            Console.WriteLine(p.displaySentence());
+
+            p.addCode((int)WordsEnum.Drive);
+            Console.WriteLine(p.displaySentence());
+
+            p.addCode((int)WordsEnum.Bicycle);
+            Console.WriteLine(p.displaySentence());
         }
 
-        private void match(int wordCode)
+        private void addCode(int wordCode)
         {
             this.input.Add(wordCode);
+        }
 
+        private string displaySentence()
+        {
+            find();
+            return foundSentence;
+        }
 
-            //Console.WriteLine(String.Format("Word = {0}, Count = {1}", wordCode, input.Count));
-
-            if (this.input.Count < 2)
-            {
+        private void find()
+        {
+            if (this.input.Count < 1)
                 return;
-            }
 
-            string display;
-            foreach (var item in sentencesDictionary)
+            for (int i = currentWordIndex; i < this.input.Count; i += 1)
             {
-                var Value = item.Value;
-                var Key = item.Key;
+                bool AreThereMatches = false;
 
-                if (input.SequenceEqual(Value))
+                foreach (SentenceStructure s in sentencesDictionary)
                 {
-                    display = Key;
-                    Console.WriteLine(display);
+                    if (notMatchList.Contains(s.ID) || this.input.Count > s.Codes.Count)
+                        continue;
+
+                    if (this.input[i] != s.Codes[i])
+                    {
+                        notMatchList.Add(s.ID);
+                        if (!AreThereMatches)
+                            AreThereMatches = false;
+
+                        continue;
+                    }
+
+                    if (input.Count == s.Codes.Count)
+                        foundSentence = s.Text;
+
+                    AreThereMatches = true;
                 }
+
+                if (!AreThereMatches)
+                {
+                    currentWordIndex -= 1;
+                    i = currentWordIndex;
+                    input.RemoveAt(i);
+                    this.notMatchList.Clear();
+
+                    find();
+                }
+
+                currentWordIndex += 1;
             }
+
         }
     }
 }

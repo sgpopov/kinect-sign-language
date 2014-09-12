@@ -1,12 +1,13 @@
 ﻿namespace KSL.Demo
 {
+    using KSL.Gestures.Classifier;
     using KSL.Gestures.Core;
     using KSL.Gestures.Segments;
-    using KSL.Gestures.Classifier;
     using Microsoft.Kinect;
     using Microsoft.Kinect.Toolkit;
     using Microsoft.Samples.Kinect.WpfViewers;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Timers;
     using System.Windows;
@@ -20,19 +21,28 @@
         private readonly KinectSensorChooser sensorChooser = new KinectSensorChooser();
         private Skeleton[] skeletons = new Skeleton[0];
         private GesturesController gestureController;
+
         Timer clearTimer;
         public event PropertyChangedEventHandler PropertyChanged;
-        private string gesture;
+        
         Classifier classifier = Classifier.getInstance;
 
+        private string gestureSentence;
+        private string gestureBuilder;
+
         #endregion
+
+        #region "Constructor"
 
         public MainWindow()
         {
             DataContext = this;
-            InitializeComponent();          
-            InitializeKinect();        
+            InitializeComponent();
+            classifier.init();
+            InitializeKinect();
         }
+
+        #endregion
 
         #region "Initialize Kinect"
 
@@ -207,25 +217,25 @@
             switch (e.GestureName)
             {
                 case "Hello":
-                    display(WordsDictionaryEnum.Hello);
+                    display(WordsEnum.Hello);
                     break;
                 case "You":
-                    display(WordsDictionaryEnum.You);
+                    display(WordsEnum.You);
                     break;
                 case "Name":
-                    display(WordsDictionaryEnum.Name);
+                    display(WordsEnum.Name);
                     break;
                 case "City":
-                    display(WordsDictionaryEnum.City);
+                    display(WordsEnum.City);
                     break;
                 case "Live":
-                    display(WordsDictionaryEnum.Live);
+                    display(WordsEnum.Live);
                     break;
                 case "Drive":
-                    display(WordsDictionaryEnum.Drive);
+                    display(WordsEnum.Drive);
                     break;
                 case "Age":
-                    display(WordsDictionaryEnum.Age);
+                    display(WordsEnum.Age);
                     break;
                 default:
                     break;
@@ -238,33 +248,58 @@
 
         #region "Display text"
 
-        private void display(WordsDictionaryEnum word)
+        private void display(WordsEnum word)
         {
             classifier.addCode((int) word);
+            classifier.findSentence();
+            string sentence = classifier.getSentence();
+            List<int> sentenceBuilder = classifier.getSentenceBuilder();
 
-            string sentence = classifier.matchForSentence();
-
-            if (!String.IsNullOrEmpty(sentence))
+            if (sentenceBuilder.Count > 1 && !String.IsNullOrEmpty(sentence))
             {
-                string s = sentence;
-            }
+                GestureBuilder = String.Empty;
+                foreach (int wordCode in sentenceBuilder)
+                {
+                    GestureBuilder = String.Format("{0} {1}", GestureBuilder, Enum.GetName(typeof(WordsEnum), wordCode));
+                }
 
-            Gesture = String.IsNullOrEmpty(sentence) ? Enum.GetName(typeof(WordsDictionaryEnum), word) : sentence;
+                GestureSentence = sentence;
+            }
+            else
+            {
+                GestureBuilder = Enum.GetName(typeof(WordsEnum), word);
+            }
         }
 
-        public String Gesture
+        public String GestureSentence
         {
-            get { return gesture; }
+            get { return gestureSentence; }
 
             private set
             {
-                if (gesture == value)
+                if (gestureSentence == value)
                     return;
 
-                gesture = value;
+                gestureSentence = value;
 
                 if (this.PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("Gesture"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("GestureSentence"));
+            }
+        }
+
+        public String GestureBuilder
+        {
+            get { return gestureBuilder; }
+
+            private set
+            {
+                if (gestureBuilder == value)
+                    return;
+
+                gestureBuilder = value;
+
+                if(this.PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("GestureBuilder"));
             }
         }
 
@@ -272,7 +307,7 @@
 
         void clearTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            Gesture = "";
+            GestureSentence = "";
             clearTimer.Stop();
         }
     }
