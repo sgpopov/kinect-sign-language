@@ -1,8 +1,7 @@
-C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Debug\KSL.Tests.exe.config
-C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\obj\Debug\KSL.Tests.csprojResolveAssemblyReference.cache
-C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Debug\KSL.Tests.exe
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Debug\KSL.Tests.dll
 C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Debug\KSL.Tests.pdb
 C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Debug\KSL.Gestures.dll
 C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Debug\KSL.Gestures.pdb
-C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\obj\Debug\KSL.Tests.exe
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\obj\Debug\KSL.Tests.csprojResolveAssemblyReference.cache
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\obj\Debug\KSL.Tests.dll
 C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\obj\Debug\KSL.Tests.pdb

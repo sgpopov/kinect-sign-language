@@ -1,0 +1,7 @@
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Release\KSL.Tests.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Release\KSL.Tests.pdb
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Release\KSL.Gestures.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\bin\Release\KSL.Gestures.pdb
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\obj\Release\KSL.Tests.csprojResolveAssemblyReference.cache
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\obj\Release\KSL.Tests.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Tests\obj\Release\KSL.Tests.pdb

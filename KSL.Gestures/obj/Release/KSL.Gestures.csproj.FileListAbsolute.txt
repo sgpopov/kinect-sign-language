@@ -1,0 +1,4 @@
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\Gestures\bin\Release\KSL.Gestures.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\Gestures\bin\Release\KSL.Gestures.pdb
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\Gestures\obj\Release\KSL.Gestures.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\Gestures\obj\Release\KSL.Gestures.pdb

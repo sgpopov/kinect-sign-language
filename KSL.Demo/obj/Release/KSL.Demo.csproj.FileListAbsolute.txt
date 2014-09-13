@@ -1,0 +1,17 @@
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Release\KSL.Demo.exe.config
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Release\KSL.Demo.exe
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Release\KSL.Demo.pdb
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Release\KSL.Gestures.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Release\Microsoft.Kinect.Toolkit.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Release\Microsoft.Samples.Kinect.WpfViewers.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\bin\Release\KSL.Gestures.pdb
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\KSL.Demo.csprojResolveAssemblyReference.cache
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\MainWindow.baml
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\MainWindow.g.cs
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\App.g.cs
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\KSL.Demo_MarkupCompile.cache
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\KSL.Demo.g.resources
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\KSL.Demo.Properties.Resources.resources
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\KSL.Demo.csproj.GenerateResource.Cache
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\KSL.Demo.exe
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KinectSignLanguage\obj\Release\KSL.Demo.pdb
