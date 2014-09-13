@@ -14,7 +14,8 @@ Your computer must have the following minimum capabilities:
   - Dual-core 2.66-GHz or faster processor
   - Dedicated USB 2.0 bus
   - 2 GB RAM
-  - A Microsoft Kinect (model 1414)
+  - A Microsoft Kinect (Model 1414)
+![Microsoft Xbox 360 Kinect Model 1414](http://i.imgur.com/EMkejfZ.jpg)
 
 Software requirements:
   - Visual Studio 2012 or newer
