@@ -92,6 +92,8 @@
 
         public void findSentence()
         {
+            this.foundSentence = String.Empty;
+
             if (this.sentenceBuilder.Count < 1)
                 return;
 

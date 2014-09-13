@@ -105,5 +105,61 @@
 
             StringAssert.Equals("How old are you?", sentence);
         }
+
+        [TestMethod]
+        public void ItShouldReturnHowOldAreYou2()
+        {
+            classifier.addCode((int)WordsEnum.Hello);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.City);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Live);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Age);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Hello);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Age);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Age);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            classifier.findSentence();
+            sentence = classifier.getSentence();
+            testList = classifier.getSentenceBuilder();
+
+            StringAssert.Equals("How old are you?", sentence);
+        }
     }
 }

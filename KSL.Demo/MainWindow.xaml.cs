@@ -245,14 +245,12 @@
 
         private void display(WordsEnum word)
         {
-            logger.logMessage(String.Format("A new word was detected: Text = '{0}'; Code = [ {1} ]", Enum.GetName(typeof(WordsEnum), word), (int) word), errorFlag.WordDetected);
-
             classifier.addCode((int) word);
             classifier.findSentence();
             string sentence = classifier.getSentence();
             List<int> sentenceBuilder = classifier.getSentenceBuilder();
 
-            logger.logMessage(String.Format("[ {0} ]", String.Join(", ", sentenceBuilder)), errorFlag.SentenceBuilderState);
+            logger.logMessage(String.Format("Main Window = [ {0} ]", String.Join(", ", sentenceBuilder)), errorFlag.SentenceBuilderState);
 
             if (sentenceBuilder.Count > 1 && !String.IsNullOrEmpty(sentence))
             {
