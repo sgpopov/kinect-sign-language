@@ -2,7 +2,7 @@ C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\Gesture
 C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\Gestures\bin\Debug\KSL.Gestures.pdb
 C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\Gestures\obj\Debug\KSL.Gestures.dll
 C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\Gestures\obj\Debug\KSL.Gestures.pdb
-C:\Users\ruuser\Documents\Visual Studio 2012\Projects\KinectSignLanguage\KSL.Gestures\bin\Debug\KSL.Gestures.dll
-C:\Users\ruuser\Documents\Visual Studio 2012\Projects\KinectSignLanguage\KSL.Gestures\bin\Debug\KSL.Gestures.pdb
-C:\Users\ruuser\Documents\Visual Studio 2012\Projects\KinectSignLanguage\KSL.Gestures\obj\Debug\KSL.Gestures.dll
-C:\Users\ruuser\Documents\Visual Studio 2012\Projects\KinectSignLanguage\KSL.Gestures\obj\Debug\KSL.Gestures.pdb
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Gestures\bin\Debug\KSL.Gestures.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Gestures\bin\Debug\KSL.Gestures.pdb
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Gestures\obj\Debug\KSL.Gestures.dll
+C:\Users\ruuser\documents\visual studio 2012\Projects\KinectSignLanguage\KSL.Gestures\obj\Debug\KSL.Gestures.pdb

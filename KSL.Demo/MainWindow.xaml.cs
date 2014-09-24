@@ -11,6 +11,7 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Text;
+    using System.Timers;
     using System.Windows;
     using System.Windows.Data;
 
@@ -30,6 +31,8 @@
 
         private string gestureSentence;
         private string gestureBuilder;
+        Timer startStopTimer;
+        private bool isNewSentence = false;
 
         #endregion
 
@@ -39,6 +42,10 @@
         {
             DataContext = this;
             InitializeComponent();
+
+            startStopTimer = new Timer(2000);
+            startStopTimer.Elapsed += new ElapsedEventHandler(startStopTimer_Elapsed);
+
             classifier.init();
             InitializeKinect();
         }
@@ -153,6 +160,16 @@
             helloSegments[1] = helloSegment2;
             gestureController.AddGesture("Hello", helloSegments);
 
+            // Word: Goodbye
+            IGesturesSegment[] goodbyeSegments = new IGesturesSegment[4];
+            GoodbyeSegment1 goodbyeSegment1 = new GoodbyeSegment1();
+            GoodbyeSegment2 goodbyeSegment2 = new GoodbyeSegment2();
+            goodbyeSegments[0] = goodbyeSegment1;
+            goodbyeSegments[1] = goodbyeSegment2;
+            goodbyeSegments[2] = goodbyeSegment1;
+            goodbyeSegments[3] = goodbyeSegment2;
+            gestureController.AddGesture("Goodbye", goodbyeSegments);
+
             // Word: You / Your / You're
             IGesturesSegment[] youSegments = new IGesturesSegment[2];
             YouSegment1 youSegment1 = new YouSegment1();
@@ -172,12 +189,11 @@
             gestureController.AddGesture("Name", nameSegments);
 
             // Word: City
-            IGesturesSegment[] citySegments = new IGesturesSegment[3];
+            IGesturesSegment[] citySegments = new IGesturesSegment[2];
             CitySegment1 citySegment1 = new CitySegment1();
             CitySegment2 citySegment2 = new CitySegment2();
             citySegments[0] = citySegment1;
             citySegments[1] = citySegment2;
-            citySegments[2] = citySegment1;
             gestureController.AddGesture("City", citySegments);
 
             // Word: Live
@@ -200,6 +216,40 @@
             driveSegments[3] = driveSegment2;
             gestureController.AddGesture("Drive", driveSegments);
 
+            // Word: Food
+            IGesturesSegment[] foodSegments = new IGesturesSegment[4];
+            FoodSegment1 foodSegment1 = new FoodSegment1();
+            foodSegments[0] = foodSegment1;
+            foodSegments[1] = foodSegment1;
+            foodSegments[2] = foodSegment1;
+            foodSegments[3] = foodSegment1;
+            gestureController.AddGesture("Food", foodSegments);
+
+            // Word: Food
+            IGesturesSegment[] whatSegments = new IGesturesSegment[10];
+            WhatSegment1 whatSegment1 = new WhatSegment1();
+            whatSegments[0] = whatSegment1;
+            whatSegments[1] = whatSegment1;
+            whatSegments[2] = whatSegment1;
+            whatSegments[3] = whatSegment1;
+            whatSegments[4] = whatSegment1;
+            whatSegments[5] = whatSegment1;
+            whatSegments[6] = whatSegment1;
+            whatSegments[7] = whatSegment1;
+            whatSegments[8] = whatSegment1;
+            whatSegments[9] = whatSegment1;
+            gestureController.AddGesture("What", whatSegments);
+
+            // Word: Hungry
+            IGesturesSegment[] hungrySegments = new IGesturesSegment[3];
+            HungrySegment1 hungrySegment1 = new HungrySegment1();
+            HungrySegment2 hungrySegment2 = new HungrySegment2();
+            HungrySegment3 hungrySegment3 = new HungrySegment3();
+            hungrySegments[0] = hungrySegment1;
+            hungrySegments[1] = hungrySegment2;
+            hungrySegments[2] = hungrySegment3;
+            gestureController.AddGesture("Hungry", hungrySegments);
+
             // Word: Age / Old
             IGesturesSegment[] ageSegments = new IGesturesSegment[2];
             AgeSegment1 ageSegment1 = new AgeSegment1();
@@ -215,6 +265,9 @@
             {
                 case "Hello":
                     display(WordsEnum.Hello);
+                    break;
+                case "Goodbye":
+                    display(WordsEnum.Goodbye);
                     break;
                 case "You":
                     display(WordsEnum.You);
@@ -234,6 +287,18 @@
                 case "Age":
                     display(WordsEnum.Age);
                     break;
+                case "Bicycle":
+                    display(WordsEnum.Bicycle);
+                    break;
+                case "Hungry":
+                    display(WordsEnum.Hungry);
+                    break;
+                case "Food":
+                    display(WordsEnum.Food);
+                    break;
+                case "What":
+                    display(WordsEnum.What);
+                    break;
                 default:
                     break;
             }
@@ -246,29 +311,31 @@
         private void display(WordsEnum word)
         {
             classifier.addCode((int) word);
-            classifier.findSentence();
-            string sentence = classifier.getSentence();
+            string sentence = classifier.findSentence();
             List<int> sentenceBuilder = classifier.getSentenceBuilder();
 
-            logger.logMessage(String.Format("Main Window = [ {0} ]", String.Join(", ", sentenceBuilder)), errorFlag.SentenceBuilderState);
-
-            if (sentenceBuilder.Count > 1 && !String.IsNullOrEmpty(sentence))
+            if (!isNewSentence)
             {
-                StringBuilder sb = new StringBuilder();
-                GestureBuilder = String.Empty;
-                foreach (int wordCode in sentenceBuilder)
+                if (sentenceBuilder.Count > 1 && !String.IsNullOrEmpty(sentence))
                 {
-                    sb.Append(Enum.GetName(typeof(WordsEnum), wordCode));
-                    sb.Append(" ● ");
+                    isNewSentence = true;
+                    startStopTimer.Start();
+                    StringBuilder sb = new StringBuilder();
+                    GestureBuilder = String.Empty;
+                    foreach (int wordCode in sentenceBuilder)
+                    {
+                        sb.Append(Enum.GetName(typeof(WordsEnum), wordCode));
+                        sb.Append(" ● ");
+                    }
+                    sb.Length = sb.Length - 3;
+                    GestureBuilder = sb.ToString();
+                    GestureSentence = sentence;
                 }
-                sb.Length = sb.Length - 3;
-                GestureBuilder = sb.ToString();
-                GestureSentence = sentence;
-            }
-            else
-            {
-                GestureSentence = String.Empty;
-                GestureBuilder = Enum.GetName(typeof(WordsEnum), word);
+                else
+                {
+                    GestureSentence = String.Empty;
+                    GestureBuilder = Enum.GetName(typeof(WordsEnum), word);
+                }
             }
         }
 
@@ -302,6 +369,12 @@
                 if(this.PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs("GestureBuilder"));
             }
+        }
+
+        private void startStopTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            startStopTimer.Stop();
+            this.isNewSentence = false;
         }
 
         #endregion

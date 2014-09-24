@@ -12,12 +12,19 @@
                 skeleton.Joints[JointType.HandRight].Position.X < skeleton.Joints[JointType.ShoulderRight].Position.X &&
                 skeleton.Joints[JointType.HandRight].Position.X > skeleton.Joints[JointType.Spine].Position.X)
             {
-                if (skeleton.Joints[JointType.HandLeft].Position.Z > skeleton.Joints[JointType.HandRight].Position.Z)
+                if (skeleton.Joints[JointType.HandLeft].Position.X < skeleton.Joints[JointType.Spine].Position.X &&
+                    skeleton.Joints[JointType.HandRight].Position.X > skeleton.Joints[JointType.Spine].Position.X)
                 {
-                    return GesturePartResult.Succeed;
+                    if (skeleton.Joints[JointType.HandRight].Position.Y > skeleton.Joints[JointType.Spine].Position.Y &&
+                        skeleton.Joints[JointType.HandLeft].Position.Y < skeleton.Joints[JointType.Spine].Position.Y)
+                    {
+                        return GesturePartResult.Succeed;
+                    }
+
+                    return GesturePartResult.Pausing;
                 }
 
-                return GesturePartResult.Pausing;
+                return GesturePartResult.Fail;
             }
 
             return GesturePartResult.Fail;
@@ -33,12 +40,19 @@
                 skeleton.Joints[JointType.HandRight].Position.X < skeleton.Joints[JointType.ShoulderRight].Position.X &&
                 skeleton.Joints[JointType.HandRight].Position.X > skeleton.Joints[JointType.Spine].Position.X)
             {
-                if (skeleton.Joints[JointType.HandLeft].Position.Z < skeleton.Joints[JointType.HandRight].Position.Z)
+                if (skeleton.Joints[JointType.HandLeft].Position.X < skeleton.Joints[JointType.Spine].Position.X &&
+                    skeleton.Joints[JointType.HandRight].Position.X > skeleton.Joints[JointType.Spine].Position.X)
                 {
-                    return GesturePartResult.Succeed;
+                    if (skeleton.Joints[JointType.HandRight].Position.Y < skeleton.Joints[JointType.Spine].Position.Y &&
+                        skeleton.Joints[JointType.HandLeft].Position.Y > skeleton.Joints[JointType.Spine].Position.Y)
+                    {
+                        return GesturePartResult.Succeed;
+                    }
+
+                    return GesturePartResult.Pausing;
                 }
 
-                return GesturePartResult.Pausing;
+                return GesturePartResult.Fail;
             }
 
             return GesturePartResult.Fail;

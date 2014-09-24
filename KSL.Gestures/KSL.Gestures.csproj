@@ -59,11 +59,16 @@
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Segments\AgeSegments.cs" />
+    <Compile Include="Segments\BicycleSegments.cs" />
     <Compile Include="Segments\CitySegments.cs" />
     <Compile Include="Segments\DriveSegments.cs" />
+    <Compile Include="Segments\FoodSegments.cs" />
+    <Compile Include="Segments\GoodbyeSegments.cs" />
     <Compile Include="Segments\HelloSegments.cs" />
+    <Compile Include="Segments\HungrySegments.cs" />
     <Compile Include="Segments\LiveSegments.cs" />
     <Compile Include="Segments\NameSegments.cs" />
+    <Compile Include="Segments\WhatSegments.cs" />
     <Compile Include="Segments\YouSegments.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

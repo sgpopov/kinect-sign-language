@@ -22,8 +22,7 @@
         public void ItShouldBeEmptySentence()
         {
             classifier.addCode((int) WordsEnum.Age);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();    
             testList = classifier.getSentenceBuilder();
 
             Assert.AreEqual(String.Empty, sentence);
@@ -33,38 +32,31 @@
         public void InputAndOutputListsSouldBeEqual()
         {
             classifier.addCode((int)WordsEnum.You);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.What);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.Hello);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.Age);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();           
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.You);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();         
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.You);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();  
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.Name);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
             testList = classifier.getSentenceBuilder();
 
             List<int> expectedList = new List<int>
@@ -79,28 +71,23 @@
         public void ItShouldReturnHowOldAreYou()
         {
             classifier.addCode((int)WordsEnum.You);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();       
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.What);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();    
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.Hello);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();      
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int) WordsEnum.Age);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int) WordsEnum.You);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
             testList = classifier.getSentenceBuilder();
 
             StringAssert.Equals("How old are you?", sentence);
@@ -110,56 +97,201 @@
         public void ItShouldReturnHowOldAreYou2()
         {
             classifier.addCode((int)WordsEnum.Hello);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.City);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.You);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.Live);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.Age);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.You);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.Hello);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.Age);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.Age);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             classifier.addCode((int)WordsEnum.You);
-            classifier.findSentence();
-            sentence = classifier.getSentence();
+            sentence = classifier.findSentence();
+            
             testList = classifier.getSentenceBuilder();
 
             StringAssert.Equals("How old are you?", sentence);
+        }
+
+        [TestMethod]
+        public void ItShouldReturnAreYouHungry()
+        {
+            classifier.addCode((int)WordsEnum.Hello);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.City);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Live);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Age);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Hello);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Age);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Hungry);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Hungry);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Hungry);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            StringAssert.Equals("Are you hungry?", sentence);
+        }
+
+        [TestMethod]
+        public void ItShouldReturnWhatDoYouWantToEat()
+        {
+            classifier.addCode((int)WordsEnum.Hello);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.City);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Live);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Age);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Hello);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Age);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Hungry);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Hungry);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Hungry);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.What);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.You);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            classifier.addCode((int)WordsEnum.Food);
+            sentence = classifier.findSentence();
+            
+            testList = classifier.getSentenceBuilder();
+
+            StringAssert.Equals("What do you want to eat?", sentence);
         }
     }
 }

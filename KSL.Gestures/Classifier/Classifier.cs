@@ -23,8 +23,6 @@
 
         private bool areThereMatches = false;
 
-        private Logger logger = Logger.getInstance;
-
         #endregion
 
         #region "Constructors"
@@ -46,7 +44,7 @@
             {
                 ID = 1,
                 Codes = new List<int> { (int)WordsEnum.City, (int)WordsEnum.You, (int)WordsEnum.Live },
-                Text = "What city do you live in"
+                Text = "What city do you live in?"
             };
             this.sentencesDictionary.Add(s);
 
@@ -54,7 +52,7 @@
             {
                 ID = 2,
                 Codes = new List<int> { (int)WordsEnum.You, (int)WordsEnum.Name },
-                Text = "What is yout name?"
+                Text = "What is your name?"
             };
             this.sentencesDictionary.Add(s);
 
@@ -81,69 +79,91 @@
                 Text = "Can you drive a bicycle?"
             };
             this.sentencesDictionary.Add(s);
+
+            s = new SentenceStructure
+            {
+                ID = 6,
+                Codes = new List<int> { (int)WordsEnum.What, (int)WordsEnum.You, (int)WordsEnum.Food },
+                Text = "What do you want to eat?"
+            };
+            this.sentencesDictionary.Add(s);
+
+            s = new SentenceStructure
+            {
+                ID = 7,
+                Codes = new List<int> { (int)WordsEnum.You, (int)WordsEnum.Hungry },
+                Text = "Are you hungry?"
+            };
+            this.sentencesDictionary.Add(s);
         }
 
         public void addCode(int wordCode)
         {
-            this.sentenceBuilder.Add(wordCode);
-            logger.logMessage(String.Format("A new word with code [ {0} ] was added.", wordCode), errorFlag.WordAdded);
-            logger.logMessage(String.Format("New sentence builder state: [ {0} ]", String.Join(", ", sentenceBuilder)), errorFlag.SentenceBuilderState);
+            if (this.sentenceBuilder.Count > 0 && this.sentenceBuilder[this.sentenceBuilder.Count - 1] == wordCode)
+            {
+                return;
+            }
+
+            this.sentenceBuilder.Add(wordCode);   
         }
 
-        public void findSentence()
+        public string findSentence()
         {
             this.foundSentence = String.Empty;
 
-            if (this.sentenceBuilder.Count < 1)
-                return;
-
-            for (int i = currentWordIndex; i < this.sentenceBuilder.Count; i += 1)
+            if (this.sentenceBuilder.Count > 1)
             {
-                areThereMatches = false;
 
-                foreach (SentenceStructure s in this.sentencesDictionary)
+                for (int i = currentWordIndex; i < this.sentenceBuilder.Count; i += 1)
                 {
-                    if (this.notMatchList.Contains(s.ID) || this.sentenceBuilder.Count > s.Codes.Count)
-                        continue;
+                    areThereMatches = false;
 
-                    if (this.sentenceBuilder[i] != s.Codes[i])
+                    foreach (SentenceStructure s in this.sentencesDictionary)
                     {
-                        this.notMatchList.Add(s.ID);
-                        if (!areThereMatches)
-                            areThereMatches = false;
+                        if (this.notMatchList.Contains(s.ID) || this.sentenceBuilder.Count > s.Codes.Count)
+                            continue;
 
-                        continue;
-                    }
+                        if (this.sentenceBuilder[i] != s.Codes[i])
+                        {
+                            this.notMatchList.Add(s.ID);
+                            if (!areThereMatches)
+                                areThereMatches = false;
 
-                    if (this.sentenceBuilder.Count == s.Codes.Count && this.sentenceBuilder.SequenceEqual(s.Codes))
-                    {
-                        this.foundSentence = s.Text;
+                            continue;
+                        }
+
+                        if (this.sentenceBuilder.Count == s.Codes.Count && this.sentenceBuilder.SequenceEqual(s.Codes))
+                        {
+                            this.foundSentence = s.Text;
+                            areThereMatches = true;
+
+                            return this.foundSentence;
+                        }
+
                         areThereMatches = true;
-                        logger.logMessage(String.Format("A new sentence was detected: Text = '{0}'; Codes = [ {1} ]", s.Text, String.Join(", ", this.sentenceBuilder)), errorFlag.SentenceDetected);
-
-                        return;
                     }
 
-                    areThereMatches = true;
+                    if (!this.areThereMatches)
+                    {
+                        this.foundSentence = String.Empty;
+                        this.currentWordIndex = 0;
+                        i = currentWordIndex;
+                        int temp = sentenceBuilder[sentenceBuilder.Count - 1];
+                        this.sentenceBuilder.Clear();
+                        this.sentenceBuilder.Add(temp);
+                        this.notMatchList.Clear();
+
+                        return findSentence();
+                    }
+
+                    if (this.sentenceBuilder.Count > 0)
+                        this.currentWordIndex += 1;
+
+                    return String.Empty;
                 }
-
-                if (!this.areThereMatches)
-                {                 
-                    this.foundSentence = String.Empty;
-                    this.currentWordIndex = currentWordIndex <= 0 ? 0 : currentWordIndex - 1;
-                    i = currentWordIndex;
-                    logger.logMessage(String.Format("Word with code [ {0} ] was removed.", sentenceBuilder[i]), errorFlag.WordRemove);
-                    this.sentenceBuilder.RemoveAt(i);
-                    this.notMatchList.Clear();
-
-                    logger.logMessage(String.Format("New sentence builder state: [ {0} ]", String.Join(", ", sentenceBuilder)), errorFlag.SentenceBuilderState);
-
-                    findSentence();
-                }
-
-                if(this.sentenceBuilder.Count > 0)
-                    this.currentWordIndex += 1;
             }
+
+            return String.Empty;
         }
 
         public bool getAreThereMatches()

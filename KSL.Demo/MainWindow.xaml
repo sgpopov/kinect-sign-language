@@ -4,12 +4,12 @@
         xmlns:kv="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers"
         Title="Kinect Sign Language :: beta"
         Width="1366" Height="768" WindowStartupLocation="CenterScreen" WindowState="Maximized"
-        Background="#379154">
+        Background="#1c2022">
     <Grid>         
-        <Image
+        <!--<Image
             Source="images/backgound.png"
             HorizontalAlignment="Center" Width="1500" Margin="-88,-188,-54,188" 
-            Stretch="UniformToFill"></Image>
+            Stretch="UniformToFill"></Image>-->
 
         <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="640" Height="480" Margin="0, 10, 0, 0">
             <kv:KinectDepthViewer x:Name="DepthViewer" KinectSensorManager="{Binding KinectSensorManager}" />
@@ -21,15 +21,19 @@
                     ShowBones="True" ShowJoints="True" ShowCenter="True" ImageType="Depth" />
             </Canvas>
         </Grid>
-     
-        <TextBlock
-            Text="{Binding GestureBuilder}"
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="1300" Height="75" Margin="0,0,0,100"
-            TextAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="#FFFFFF" />
 
-        <TextBlock
+        <Grid Background="#2a3134" Width="1500" Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0, 0, 0, 100">
+            <TextBlock
+            Text="{Binding GestureBuilder}"
+            HorizontalAlignment="Center" VerticalAlignment="Center" Width="1000" Height="80"
+            TextAlignment="Center" FontSize="40" FontWeight="Bold" Foreground="#eceded" />
+        </Grid>
+
+        <Grid Background="#272c2e" Width="1500" Height="125" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <TextBlock
             Text="{Binding GestureSentence}"
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="1300" Height="75" Margin="0,0,0,0"
-            TextAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="#FFFFFF" />
+            HorizontalAlignment="Center" VerticalAlignment="Center"  Width="1000" Height="75"
+            TextAlignment="Center" FontSize="48" FontWeight="Bold" Foreground="#eceded" />
+        </Grid>  
     </Grid>
 </Window>
