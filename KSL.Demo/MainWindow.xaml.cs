@@ -225,7 +225,7 @@
             foodSegments[3] = foodSegment1;
             gestureController.AddGesture("Food", foodSegments);
 
-            // Word: Food
+            // Word: What
             IGesturesSegment[] whatSegments = new IGesturesSegment[10];
             WhatSegment1 whatSegment1 = new WhatSegment1();
             whatSegments[0] = whatSegment1;
@@ -257,6 +257,16 @@
             ageSegments[0] = ageSegment1;
             ageSegments[1] = ageSegment2;
             gestureController.AddGesture("Age", ageSegments);
+
+            // Word: Reset
+            IGesturesSegment[] resetSegments = new IGesturesSegment[3];
+            ResetSegment1 resetSegment1 = new ResetSegment1();
+            ResetSegment2 resetSegment2 = new ResetSegment2();
+            ResetSegment3 resetSegment3 = new ResetSegment3();
+            resetSegments[0] = resetSegment1;
+            resetSegments[1] = resetSegment2;
+            resetSegments[2] = resetSegment3;
+            gestureController.AddGesture("Reset", resetSegments);
         }
 
         private void OnGestureRecognized(object sender, GesturesEventArgs e)
@@ -299,6 +309,9 @@
                 case "What":
                     display(WordsEnum.What);
                     break;
+                case "Reset":
+                    reset();
+                    break;
                 default:
                     break;
             }
@@ -307,6 +320,11 @@
         #endregion
 
         #region "Display text"
+
+        private void reset()
+        {
+            classifier.reset();
+        }
 
         private void display(WordsEnum word)
         {

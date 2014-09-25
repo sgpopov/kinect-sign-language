@@ -193,5 +193,10 @@
             this.foundSentence = String.Empty;
             this.currentWordIndex = 0;
         }
+
+        public void reset()
+        {
+            this.clear();
+        }
     }
 }

@@ -68,6 +68,7 @@
     <Compile Include="Segments\HungrySegments.cs" />
     <Compile Include="Segments\LiveSegments.cs" />
     <Compile Include="Segments\NameSegments.cs" />
+    <Compile Include="Segments\ResetSegments.cs" />
     <Compile Include="Segments\WhatSegments.cs" />
     <Compile Include="Segments\YouSegments.cs" />
   </ItemGroup>
