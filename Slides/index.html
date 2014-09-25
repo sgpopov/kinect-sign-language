@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Sign Language for Microsoft Kinect</title>
+		<meta name="description" content="Sign Language translator using Microsoft Kinect for XBOX 360. For more info - https://github.com/svil4ok/kinect-sign-language" />
+		<meta name="author" content="Svilen Popov, @svil4ok" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="css/reveal.min.css" />
+		<link rel="stylesheet" href="css/theme/svil4ok.css" id="theme" />
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css" />
+		<link rel="stylesheet" href="css/grid.css" />
+		<link rel="icon" href="favicon.ico" />
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if(window.location.search.match(/print-pdf/gi)) {
+				var link = document.createElement('link');
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName('head')[0].appendChild(link);
+			}
+		</script>
+		<!--[if lt IE 9]><script src="lib/js/html5shiv.js"></script><![endif]-->
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h2 style="font-size: 250%">Жестомимичен преводач чрез използване на Kinect</h2>
+					<br /><br />
+					<h6>Свилен Попов &bull; Русенски университет "Ангел Кънчев"</h6>
+				</section>
+
+				<!-- Жестомимичен език -->
+				<section>
+					<h2>Жестомимичен език</h2><br />
+					<img src="img/sign-language.png" />
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<!-- Microsoft Kinect като сензор -->
+				<section>
+					<section>
+						<h2>Microsoft Kinect</h2>
+					</section>
+
+					<section>
+						<h3>Microsoft Kinect for Xbox 360</h3>
+						<img src="img/kinect-for-xbox-360.png" />
+						<p class="span-sentences">Излиза на пазара на Ноември 2010</p>
+						<p class="span-sentences" style="font-size: 22px; font-style: italic;" >
+							(4 Ноември в Северна Америка, 10 Ноември в Европа)
+						</p>
+					</section>
+
+					<section data-transition="fade-in">
+						<h3 >Microsoft Kinect for Xbox One</h3>
+						<img src="img/kinect-for-xbox-one.png" />
+						<p class="span-sentences">Представен на 22 Ноември 2013</p>
+					</section>
+				</section>
+
+				<section data-transition="fade-in">
+					<img src="img/kinect-for-xbox-360-structure-01.png" id="kinectStructure" />
+					
+					<div class="fragment" change-kinect-structure="yep"></div>
+				</section>
+
+				<!-- Недостатъци на Kinect -->
+				<section>
+					<section>
+						<h2>Недостатъци на Kinect</h2>
+					</section>
+
+					<section>
+						<h2>Разпознаване на пръсти и форма на ръката</h2>
+						<p><em>(fingers and handshape recognition)</em></p>
+						<img src="img/kinect-problems.png" />
+					</section>
+
+					<section>
+						<h2>Разпознаване езика на тялото</h2>
+						<p><em>(body language)</em></p>
+					</section>
+				</section>
+
+				<!-- Разпознаване на жестове -->
+				<section>
+					<section>
+						<h1>Разпознаване на жестове</h1>
+					</section>
+
+					<section>
+						<img src="img/kinect-skeleton.png" />
+					</section>
+
+					<section>
+						<img src="img/gesture-segments.png" />
+					</section>
+
+					<section>
+						<h2><em>Демо</em></h2>
+					</section>
+					
+				</section>
+
+				<!-- Разпознаване на изречения -->
+				<section>
+					<section>
+						<h1>Разпознаване на изречения</h1>
+					</section>
+
+					<section>
+						<h2>How <span class="fragment highlight-blue" data-fragment-index="2">old</span> are <span class="fragment highlight-blue" data-fragment-index="2">you</span>?</h2>
+						<div id="curly-brace" style="width: 700px;"
+							class="fragment roll-in span-blue-color" data-fragment-index="1">
+							<div id="left" class="brace"></div>
+							<div id="right" class="brace"></div>
+						</div>
+						<br /><br />
+						<div class="fragment fade-in" data-fragment-index="2">
+							<h2><span class="span-green-color">AGE</span> + <span class="span-green-color">YOU</span></h2>
+						</div>
+					</section>
+
+					<section>
+						<h2>What <span class="fragment highlight-blue" data-fragment-index="2">city</span> do <span class="fragment highlight-blue" data-fragment-index="2">you</span> <span class="fragment highlight-blue" data-fragment-index="2">live</span> in?</h2>
+						<div id="curly-brace" style="width: 1000x;"
+							class="fragment roll-in span-blue-color" data-fragment-index="1">
+							<div id="left" class="brace"></div>
+							<div id="right" class="brace"></div>
+						</div>
+						<br /><br />
+						<div class="fragment fade-in" data-fragment-index="2">
+							<h2>
+								<span class="span-green-color">CITY</span> + 
+								<span class="span-green-color">YOU</span> + 
+								<span class="span-green-color">LIVE</span>
+							</h2>
+						</div>
+					</section>
+
+					<section>
+						<div class="col-xs-5 sentence-dictionary">
+							<div class="row">
+								<div class="col-md-3" style="line-height: 80px;">
+									ID = <span class="span-blue-color">1</span>
+								</div>
+								<div class="col-md-9">
+									<div class="block cf" style="text-align: left;">
+										<span class="span-sentences">What city do you live in?</span>
+									</div>
+									<div class="block cf" style="text-align: left;">
+										<span class="span-green-color">CITY</span> + 
+										<span class="span-green-color">YOU</span> + 
+										<span class="span-green-color">LIVE</span>
+									</div>
+								</div>
+							</div>
+							<div class="delimeter"></div>
+							<div class="row">
+								<div class="col-md-3" style="line-height: 80px;">
+									ID = <span class="span-blue-color">2</span>
+								</div>
+								<div class="col-md-9">
+									<div class="block cf" style="text-align: left;">
+										<span class="span-sentences">What is your name?</span>
+									</div>
+									<div class="block cf" style="text-align: left;">
+										<span class="span-green-color">YOU</span> + 
+										<span class="span-green-color">NAME</span>
+									</div>
+								</div>
+							</div>
+							<div class="delimeter"></div>
+							<div class="row">
+								<div class="col-md-3" style="line-height: 80px;">
+									ID = <span class="span-blue-color">3</span>
+								</div>
+								<div class="col-md-9">
+									<div class="block cf" style="text-align: left;">
+										<span class="span-sentences">Can you drive [a car]?</span>
+									</div>
+									<div class="block cf" style="text-align: left;">
+										<span class="span-green-color">YOU</span> + 
+										<span class="span-green-color">DRIVE</span>
+									</div>
+								</div>
+							</div>
+							<div class="delimeter"></div>
+							<div class="row">
+								<div class="col-md-3" style="line-height: 80px;">
+									ID = <span class="span-blue-color">4</span>
+								</div>
+								<div class="col-md-9">
+									<div class="block cf" style="text-align: left;">
+										<span class="span-sentences">How old are you?</span>
+									</div>
+									<div class="block cf" style="text-align: left;">
+										<span class="span-green-color">AGE</span> + 
+										<span class="span-green-color">YOU</span>
+									</div>
+								</div>
+							</div>
+							<div class="delimeter"></div>
+							<div class="row">
+								<div class="col-md-3" style="line-height: 80px;">
+									ID = <span class="span-blue-color">5</span>
+								</div>
+								<div class="col-md-9">
+									<div class="block cf" style="text-align: left;">
+										<span class="span-sentences">Can you drive a bicycle?</span>
+									</div>
+									<div class="block cf" style="text-align: left;">
+										<span class="span-green-color">YOU</span> + 
+										<span class="span-green-color">DRIVE</span> +
+										<span class="span-green-color">BICYCLE</span>
+									</div>
+								</div>
+							</div>
+							<div class="delimeter"></div>
+							<div class="row">
+								<div class="col-md-3" style="line-height: 80px;">
+									ID = <span class="span-blue-color">6</span>
+								</div>
+								<div class="col-md-9">
+									<div class="block cf" style="text-align: left;">
+										<span class="span-sentences">What is your favorite food?</span>
+									</div>
+									<div class="block cf" style="text-align: left;">
+										<span class="span-green-color">YOU</span> + 
+										<span class="span-green-color">FAV</span> +
+										<span class="span-green-color">FOOD</span>
+									</div>
+								</div>
+							</div>
+							<div class="delimeter"></div>
+							<div class="row">
+								<div class="col-md-3" style="line-height: 80px;">
+									ID = <span class="span-blue-color">7</span>
+								</div>
+								<div class="col-md-9">
+									<div class="block cf" style="text-align: left;">
+										<span class="span-sentences">Are you hungry?</span>
+									</div>
+									<div class="block cf" style="text-align: left;">
+										<span class="span-green-color">YOU</span> + 
+										<span class="span-green-color">FOOD</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">&nbsp;</div>
+
+						<div class="col-md-4">
+							<div class="row">
+								<div class="col-md-12 fragment fade-in" data-fragment-index="1">
+									<div class="table-caption" style="width: 155px;">sentence builder</div>
+									<table class="styled-table">
+										<tr>
+											<td>
+												<span id="txt-sb-1" class="span-green-color fragment fade-in" data-fragment-index="4" style="font-size: 75%;">YOU</span>
+											</td>
+											<td>
+												<span id="txt-sb-2" class="span-green-color fragment fade-in" data-fragment-index="11" style="font-size: 75%;">YOU</span>
+											</td>
+											<td>
+												<span id="txt-sb-3" class="span-green-color fragment fade-in" data-fragment-index="13" style="font-size: 75%;">LIVE</span>
+											</td>
+											<td>&nbsp;&nbsp;</td>
+											<td>&nbsp;&nbsp;</td>
+											<td>&nbsp;&nbsp;</td>
+											<td>&nbsp;&nbsp;</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+
+							<br />
+							<div class="row">
+								<div class="col-md-12 fragment fade-in" data-fragment-index="1">
+									<div class="table-caption" style="width: 120px;">not matched</div>
+									<table class="styled-table">
+										<tr>
+											<td>
+												<span id="txt-not-matched-1" class="span-red-color fragment fade-in" data-fragment-index="3">1</span>
+											</td>
+											<td>
+												<span id="txt-not-matched-2" class="span-red-color fragment fade-in" data-fragment-index="3">4</span>
+											</td>
+											<td>
+												<span id="txt-not-matched-3" class="span-red-color fragment fade-in" data-fragment-index="6">2</span>
+											</td>
+											<td>
+												<span id="txt-not-matched-4" class="span-red-color fragment fade-in" data-fragment-index="6">3</span>
+											</td>
+											<td>
+												<span id="txt-not-matched-5" class="span-red-color fragment fade-in" data-fragment-index="6">5</span>
+											</td>
+											<td>
+												<span id="txt-not-matched-6" class="span-red-color fragment fade-in" data-fragment-index="6">6</span>
+											</td>
+											<td>
+												<span id="txt-not-matched-7" class="span-red-color fragment fade-in" data-fragment-index="6">7</span>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+
+							<br />
+							<div class="row fragment fade-in" data-fragment-index="2">
+								<div class="col-md-2" style="text-align: left;">
+									<span class="span-input-blue">></span> 
+								</div>
+								<div class="col-md-10" style="text-align: left;">
+									<span id="txt-input" class="span-green-color fragment fade-in" data-fragment-index="2" data-fragment-index="4">
+										YOU
+									</span>
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="fragment" data-fragment-index="5"></div>
+						<div class="fragment" data-fragment-index="7"></div>
+						<div class="fragment" data-fragment-index="8"></div>
+						<div class="fragment" data-fragment-index="9"></div>
+						<div class="fragment" data-fragment-index="10"></div>
+						<div class="fragment" data-fragment-index="11"></div>
+						<div class="fragment" data-fragment-index="12"></div>
+						<div class="fragment" data-fragment-index="13"></div>
+						<div class="fragment" data-fragment-index="14"></div>
+						<div class="fragment" data-fragment-index="15"></div>
+						<div class="fragment" data-fragment-index="16"></div>
+						<div class="fragment" data-fragment-index="17"></div>
+						<div class="fragment" data-fragment-index="18"></div>
+
+					</section>
+
+					<!-- Демо -->
+					<section>
+						<h2><em>Демо</em></h2>
+					</section>
+
+				</section>
+
+				<!-- Край -->
+				<section>
+					<h1>Благодаря за вниманието!</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+		<script type="text/javascript">
+		Reveal.addEventListener('fragmentshown', function(event) {
+			var indexf = event.fragment.getAttribute('data-fragment-index');
+
+			if(indexf == 0 && event.fragment.hasAttribute('change-kinect-structure')) {
+				document.getElementById("kinectStructure").src = "img/kinect-for-xbox-360-structure-02.png";
+			}
+
+			if(indexf == 4) {
+				document.getElementById("txt-input").innerHTML = "CITY";
+			}
+			if(indexf == 6) {
+				document.getElementById("txt-not-matched-1").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-2").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-3").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-4").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-5").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-6").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-7").innerHTML = "&nbsp;";
+				document.getElementById("txt-sb-1").innerHTML = "&nbsp;";
+				
+			}
+			if(indexf == 7) {
+				document.getElementById("txt-not-matched-1").innerHTML = "2";
+				document.getElementById("txt-not-matched-2").innerHTML = "3";
+				document.getElementById("txt-not-matched-3").innerHTML = "4";
+				document.getElementById("txt-not-matched-4").innerHTML = "5";
+				document.getElementById("txt-not-matched-5").innerHTML = "6";
+				document.getElementById("txt-not-matched-6").innerHTML = "7";
+			}
+			if(indexf == 8) {
+				document.getElementById("txt-sb-1").innerHTML = "CITY";
+			}
+			if(indexf == 9) {
+				document.getElementById("txt-input").innerHTML = "YOU";
+			}
+			if(indexf == 11) {
+				document.getElementById("txt-input").innerHTML = "LIVE";
+			}
+			if(indexf == 13) {
+				document.getElementById("txt-input").innerHTML = "HELLO";
+			}
+			if(indexf == 14) {
+				document.getElementById("txt-not-matched-7").innerHTML = "1";
+			}
+			if(indexf == 15) {
+				document.getElementById("txt-not-matched-1").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-2").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-3").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-4").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-5").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-6").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-7").innerHTML = "&nbsp;";
+				document.getElementById("txt-sb-1").innerHTML = "&nbsp;";
+				document.getElementById("txt-sb-2").innerHTML = "&nbsp;";
+				document.getElementById("txt-sb-3").innerHTML = "&nbsp;";
+			}
+			if(indexf == 16) {
+				document.getElementById("txt-not-matched-1").innerHTML = "1";
+				document.getElementById("txt-not-matched-2").innerHTML = "2";
+				document.getElementById("txt-not-matched-3").innerHTML = "3";
+				document.getElementById("txt-not-matched-4").innerHTML = "4";
+				document.getElementById("txt-not-matched-5").innerHTML = "5";
+				document.getElementById("txt-not-matched-6").innerHTML = "6";
+				document.getElementById("txt-not-matched-7").innerHTML = "7";
+			}
+			if(indexf == 17) {
+				document.getElementById("txt-not-matched-1").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-2").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-3").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-4").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-5").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-6").innerHTML = "&nbsp;";
+				document.getElementById("txt-not-matched-7").innerHTML = "&nbsp;";
+				document.getElementById("txt-input").innerHTML = "";
+			}
+			console.log(indexf);
+		});
+		</script>
+	</body>
+</html>
