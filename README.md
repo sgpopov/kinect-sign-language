@@ -1,7 +1,10 @@
 Kinect Sign Language
 ====================
 
-Work in progress
+A sign language is a language which uses manual communication and body language to convey meaning, as opposed to acoustically conveyed sound patterns. This can involve simultaneously combining hand shapes, orientation and movement of the hands, arms or body, and facial expressions to fluidly express a speaker's thoughts. Wherever communities of deaf people exist, sign languages have been developed. Signing is not only used by the deaf, it is also used by people who can hear, but cannot physically speak.
+
+The goal of this project consists developing an automatic Sign Language Translator using the data provided by the Microsoft Kinect XBOX 360 camera.
+
 
 System Requirements
 -----------
